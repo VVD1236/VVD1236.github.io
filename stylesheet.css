@@ -1,6 +1,81 @@
+/*シャッター*/
+.shutter{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color:#1e1e1e;
+  z-index:9999;
+}
+.shutter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #fff;
+  width: 0;
+  height: 1px;
+}
+.shutter {
+  -webkit-animation: byeShutter 2.6s forwards;
+          animation: byeShutter 2.6s forwards;
+}
+.shutter::before {
+  -webkit-animation: shutterOpen 2.6s forwards;
+          animation: shutterOpen 2.6s forwards;
+}
+.content {
+  -webkit-animation: contentScale 2.6s forwards;
+          animation: contentScale 2.6s forwards;
+}
+@keyframes byeShutter {
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: -1;
+  }
+}
+@keyframes shutterOpen {
+  0% {
+    width: 0;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  90% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes contentScale {
+  70% {
+    -webkit-transform: perspective(800px) scale(0.9) rotateX(15deg);
+            transform: perspective(800px) scale(0.9) rotateX(15deg);
+  }
+  100% {
+    -webkit-transform: perspective(800px) scale(1) rotateX(0);
+            transform: perspective(800px) scale(1) rotateX(0);
+  }
+}
+/*シャッター*/
+
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN";
+  background-color:white;
+
 }
 
 /*ここからheader*/
@@ -13,14 +88,23 @@ body {
   width:100px;
 }
 /*ここまでheader*/
+.logo_test {                    /* ロゴ部分の指定 */
+    text-align:  center;        /* 文字を中央揃え */
+    color:  #fff;                /* 文字の色指定 */
+    width: 100%;                /* 幅指定 */
+    margin:  0 auto;            /* 中央寄せ */
+    color: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+}
+
+
+
 
 /*ここからtop-wrapper*/
 .top-wrapper {
-   padding: 180px 0 100px 0;
-  background-image: url(https://instagram.fitm1-1.fna.fbcdn.net/v/t51.2885-19/s320x320/100959684_1154793294855336_3261912869721079808_n.jpg?_nc_ht=instagram.fitm1-1.fna.fbcdn.net&_nc_ohc=XwDTPWVQkFQAX_gxbXR&oh=503db4927871affbed26fc6c3dbd7f5a&oe=5F5C751B);
-  background-size: cover;
+  padding: 180px 0 100px 0;
   text-align: center;
   color:white;
+  -webkit-background-clip: text;
 }
 .top-wrapper h1 {
   opacity: 0.7;
@@ -33,49 +117,466 @@ body {
 .btn-wrapper {
   margin: 20px 0;
 }
+.container h2{
+  color:white;
+}
 
-.btn {
-  padding: 8px 24px;
+
+
+/*ここからmovie*/
+.movie {
+  width: 200px;
+  height: 60px;
+
   color: white;
   display: inline-block;
   opacity: 0.8;
   border: 2px solid;
-  border-radius: 4px;
+  border-radius: 6px;
+  position: relative;
+  perspective: 300px;
 }
-.btn-wrapper p {
+.movie span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid rgba(231, 80, 134);
+  text-align: center;
+  line-height: 56px;
+  box-sizing: border-box;
+  transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.movie span:nth-child(1) {
+  background-color: white;
+  color: rgba(231, 18, 94);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.movie span:nth-child(2) {
+  background-color: rgba(231, 18, 94);
+  color: white;
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -30px;
+}
+.movie:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+.movie:hover span:nth-child(2) {
+  background-color: white;
+  transform: rotateX(-90deg);
+}
+/*ここまでMOVIE*/
+
+/*ここからmusic*/
+.music {
+  width: 200px;
+  height: 60px;
+
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border: 2px solid;
+  border-radius: 6px;
+  position: relative;
+  perspective: 300px;
+}
+.music span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid ;
+  text-align: center;
+  line-height: 56px;
+  box-sizing: border-box;
+  transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.music span:nth-child(1) {
+  background-color: white;
+  color: rgba(40, 233, 169, 1);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.music span:nth-child(2) {
+  background-color: rgba(40, 233, 169, 1);
+  color: white;
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -30px;
+}
+.music:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+.music:hover span:nth-child(2) {
+  background-color: white;
+  transform: rotateX(-90deg);
+}
+/*ここまでMUSIC*/
+
+
+/*ここからanime*/
+.anime {
+  width: 200px;
+  height: 60px;
+
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border: 2px solid;
+  border-radius: 6px;
+  position: relative;
+  perspective: 300px;
+}
+.anime span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid ;
+  text-align: center;
+  line-height: 56px;
+  box-sizing: border-box;
+  transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.anime span:nth-child(1) {
+  background-color: white;
+  color: rgba(21, 231, 237, 1);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.anime span:nth-child(2) {
+  background-color: rgba(21, 231, 237, 1);
+  color: white;
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -30px;
+}
+.anime:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+.anime:hover span:nth-child(2) {
+  background-color: white;
+  transform: rotateX(-90deg);
+}
+/*ここまでanime*/
+
+
+/*ここからothers*/
+.others {
+  width: 200px;
+  height: 60px;
+
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border: 2px solid;
+  border-radius: 6px;
+  position: relative;
+  perspective: 300px;
+}
+.others span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid ;
+  text-align: center;
+  line-height: 56px;
+  box-sizing: border-box;
+  transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.others span:nth-child(1) {
+  background-color: white;
+  color: rgba(237, 190, 21, 1);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.others span:nth-child(2) {
+  background-color: rgba(237, 190, 21, 1);
+  color: white;
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -30px;
+}
+.others:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+.others:hover span:nth-child(2) {
+  background-color: white;
+  transform: rotateX(-90deg);
+}
+/*ここまでothers*/
+
+/*ここからアカウント*/
+.account {
+  width: 200px;
+  height: 60px;
+
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border: 2px solid white;
+  border-radius: 6px;
+  position: relative;
+  perspective: 300px;
+}
+.account span {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  border: 2px solid white;
+  text-align: center;
+  line-height: 56px;
+  box-sizing: border-box;
+  transition: all .3s;
+  transition: all .3s;
+  pointer-events: none;
+}
+.account span:nth-child(1) {
+  background-color: white;
+  color: rgba(237, 32, 223, 1);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+  transform-origin: 50% 50% -30px;
+}
+.account span:nth-child(2) {
+  background-color: rgba(237, 32, 223, 1);
+  color: white;
+  transform: rotateX(0deg);
+  transform-origin: 50% 50% -30px;
+}
+.account:hover span:nth-child(1) {
+  transform: rotateX(0deg);
+}
+.account:hover span:nth-child(2) {
+  background-color: white;
+  transform: rotateX(-90deg);
+}
+/*ここまでMUSIC*/
+
+
+btn-wrapper p {
   margin: 10px 0;
 }
-.movie {
-  background-color: #11b884;
-}
 
-.music {
-  background-color: #3b5998;
-  margin-right: 10px;
-}
-
-.animation {
-  background-color: #55acee;
-}
-.others {
-  background-color: #eea940;
+.
 
 }
 .btn:hover {
   opacity: 1;
 }
-
 /*ここまでtop-wrapper*/
 
 /*ここからcontents-wrapper*/
-.contents {
+.snip1141 {
   size:cover;
   display: inline-block; /* ここがポイント */
-  height:80px
+  height:100%;
+  width:25%;
 }
-.contents img {
+.snip1141 img {
   object-fit: cover;
-  width: 250px;
-  height: 250px;
 }
 /*ここまでcontents-wrappe*/
+
+
+/*実験*/
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,800);
+figure.snip1141 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 220px;
+  max-width: 310px;
+  max-height: 310px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+figure.snip1141 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+figure.snip1141 img {
+  max-width: 100%;
+  position: relative;
+  opacity: 0.9;
+}
+
+figure.snip1141 .circle {
+  position: relative;
+  height: 55px;
+  width: 55px;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  text-align: center;
+}
+
+figure.snip1141 .circle:before,
+figure.snip1141 .circle:after {
+  border: 2px solid white;
+  border-right-color: transparent;
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+figure.snip1141 .circle:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+figure.snip1141 .circle:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+figure.snip1141 figcaption {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+figure.snip1141 h2 {
+  position: absolute;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 55px;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  padding: 0 20px;
+  opacity: 0;
+  -webkit-transform: translateX(-10%);
+  transform: translateX(-10%);
+}
+
+figure.snip1141 .icon {
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+}
+
+figure.snip1141 i {
+  color: white;
+  font-size: 48px;
+  line-height: 55px;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+figure.snip1141 a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+figure.snip1141:hover .circle,
+figure.snip1141.hover .circle {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+figure.snip1141:hover .circle:before,
+figure.snip1141.hover .circle:before,
+figure.snip1141:hover .circle:after,
+figure.snip1141.hover .circle:after {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+figure.snip1141:hover h2,
+figure.snip1141.hover h2 {
+  opacity: 1;
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+figure.snip1141:hover img,
+figure.snip1141.hover img {
+  opacity: 0.35;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+figure.snip1141:hover i,
+figure.snip1141.hover i {
+  opacity: 0;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+
+/* Demo purposes only */
+html {
+  height: 100%;
+}
+body {
+  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  margin: 0;
+  height: 100%;
+}
+
+
+Resources
+/*実験*/
