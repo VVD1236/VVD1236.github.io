@@ -71,6 +71,16 @@
 }
 /*シャッター*/
 
+/*メニューアイコン*/
+.menu-icon {
+  color: white;
+  float: right;
+  font-size: 25px;
+  padding: 21px 0;
+  display:none;
+  /*メニューアイコン*/
+}
+
 body {
   margin: 0;
   font-family: "Hiragino Kaku Gothic ProN";
@@ -98,7 +108,9 @@ body {
 
 
 
-
+.main {
+  text-align: center;
+}
 /*ここからtop-wrapper*/
 .top-wrapper {
   padding: 180px 0 100px 0;
